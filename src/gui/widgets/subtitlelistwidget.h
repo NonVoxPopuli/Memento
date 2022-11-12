@@ -270,7 +270,7 @@ private:
         QMultiMap<double, QTableWidgetItem *> startToItem;
 
         /* Maps table widget items to subtitle infos. */
-        QHash<QTableWidgetItem *, const SubtitleInfo *> itemToSub;
+        QHash<QTableWidgetItem *, SubtitleInfo> itemToSub;
 
         /* Maps subtitle lines to table widget items for parsed subtitles. */
         QMultiHash<QString, QTableWidgetItem *> lineToItem;

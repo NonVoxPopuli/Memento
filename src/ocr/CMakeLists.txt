@@ -15,7 +15,7 @@ add_library(
 target_link_libraries(
     ocrmodel
     mocr++
-    Qt5::Core
-    Qt5::Concurrent
-    Qt5::Gui
+    Qt6::Core
+    Qt6::Concurrent
+    Qt6::Gui
 )

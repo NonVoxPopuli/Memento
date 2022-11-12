@@ -25,6 +25,8 @@
 
 #include <QSharedPointer>
 
+#include "gui/mpvadapter.h"
+
 class AnkiClient;
 class AudioPlayer;
 class Dictionary;
@@ -46,7 +48,7 @@ struct Track;
 
 /**
  * A mediator that other objects can tap in to in order to send and receive
- * signals without having to know about eachother. Also contains pointers
+ * signals without having to know about each other. Also contains pointers
  * to several shared objects.
  */
 class GlobalMediator : public QObject

@@ -102,14 +102,8 @@ no workaround that can be implemented.
 
 ## Dependencies
 
-* Qt5 (>= 5.15)
-    * QtCore
-    * QtGui
-    * QtWidgets
-    * QtNetwork
-    * QtSvg
-    * QtDBus (Linux)
-    * X11Extras (Linux)
+* Qt6
+* QtSvg
 * mpv
 * sqlite3
 * MeCab
@@ -146,18 +140,18 @@ sudo make install
     ```
 1. Install the necessary tools and dependencies:
     ```
-    pacman -S git make mingw-w64-x86_64-gcc mingw-w64-x86_64-ninja mingw-w64-x86_64-cmake mingw-w64-x86_64-python mingw-w64-x86_64-sqlite3 mingw-w64-x86_64-qt5 mingw-w64-x86_64-mpv mingw-w64-x86_64-mecab mingw-w64-x86_64-json-c mingw-w64-x86_64-libzip
+    pacman -S git make mingw-w64-x86_64-gcc mingw-w64-x86_64-ninja mingw-w64-x86_64-cmake mingw-w64-x86_64-python mingw-w64-x86_64-sqlite3 mingw-w64-x86_64-qt6 mingw-w64-x86_64-mpv mingw-w64-x86_64-mecab mingw-w64-x86_64-json-c mingw-w64-x86_64-libzip
     ```
-1. Clone the repository:
+2. Clone the repository:
     ```
     git clone https://github.com/ripose-jp/Memento.git
     ```
-1. Build Memento:
+3. Build Memento:
     ```
     cd Memento
     ./windows/build.sh x86_64
     ```
-1. The resulting file will be in
+4. The resulting file will be in
     ```
     build/Memento_x86_64
     ```
@@ -172,7 +166,7 @@ sudo make install
    ```
 1. Install the necessary tools and dependencies:
    ```
-   brew install git cmake sqlite3 qt5 mpv mecab mecab-ipadic json-c libzip
+   brew install git cmake sqlite3 qt6 mpv mecab mecab-ipadic json-c libzip
    ```
 1. Clone the repository:
    ```

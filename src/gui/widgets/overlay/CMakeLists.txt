@@ -5,8 +5,8 @@ add_library(
 target_link_libraries(
     progressslider
     strokelabel
-    Qt5::Widgets
-    Qt5::Core
+    Qt6::Widgets
+    Qt6::Core
 )
 list(APPEND PLAYER_OVERLAY_LIBS progressslider)
 
@@ -17,7 +17,7 @@ add_library(
 )
 target_link_libraries(
     playermenu
-    Qt5::Widgets
+    Qt6::Widgets
 )
 list(APPEND PLAYER_OVERLAY_LIBS playermenu)
 
@@ -28,7 +28,7 @@ add_library(
 target_link_libraries(
     subtitlewidget
     strokelabel
-    Qt5::Widgets
+    Qt6::Widgets
     globalmediator
     dictionary_db
     mpvadapter
@@ -42,7 +42,7 @@ add_library(
 )
 target_link_libraries(
     playercontrols
-    Qt5::Widgets
+    Qt6::Widgets
     iconfactory
     subtitlewidget
     progressslider
@@ -57,7 +57,7 @@ if(OCR_SUPPORT)
     target_link_libraries(
         ocroverlay
         ocrmodel
-        Qt5::Widgets
+        Qt6::Widgets
     )
     list(APPEND PLAYER_OVERLAY_LIBS ocroverlay)
 endif()

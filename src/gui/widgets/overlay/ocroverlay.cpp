@@ -22,7 +22,7 @@
 
 #include <QKeyEvent>
 #include <QMouseEvent>
-#include <QOpenGLWidget>
+#include <QtOpenGLWidgets/QOpenGLWidget>
 #include <QRubberBand>
 #include <QScreen>
 
@@ -59,7 +59,9 @@ void OCROverlay::mousePressEvent(QMouseEvent *event)
     QWidget::mousePressEvent(event);
 
     m_startPoint = event->pos();
-    m_rubberBand->setGeometry(event->x(), event->y(), 0, 0);
+    m_rubberBand->setGeometry(
+        event->position().x(), event->position().y(), 0, 0
+    );
     m_rubberBand->show();
 }
 
@@ -67,8 +69,7 @@ void OCROverlay::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
 
-    /* TODO: Replace with QRect::span() in Qt6 */
-    m_rubberBand->setGeometry(OCROverlay::span(m_startPoint, event->pos()));
+    m_rubberBand->setGeometry(QRect::span(m_startPoint, event->pos()));
 }
 
 void OCROverlay::mouseReleaseEvent(QMouseEvent *event)
@@ -77,8 +78,7 @@ void OCROverlay::mouseReleaseEvent(QMouseEvent *event)
 
     if (m_rubberBand->isVisible())
     {
-        /* TODO: Replace with QRect::span() in Qt6 */
-        getText(OCROverlay::span(m_startPoint, event->pos()));
+        getText(QRect::span(m_startPoint, event->pos()));
     }
     m_rubberBand->hide();
     hide();
@@ -123,15 +123,6 @@ void OCROverlay::getText(QRect rect)
         ))
     };
     m_resultWatcher.setFuture(m_model.getText(image));
-}
-
-QRect OCROverlay::span(const QPoint &p1, const QPoint &p2)
-{
-    int x = p1.x() < p2.x() ? p1.x() : p2.x();
-    int y = p1.y() < p2.y() ? p1.y() : p2.y();
-    int w = std::abs(p1.x() - p2.x());
-    int h = std::abs(p1.y() - p2.y());
-    return QRect(x, y, w, h);
 }
 
 /* End Helpers */

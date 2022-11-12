@@ -10,7 +10,7 @@ add_library(
 target_link_libraries(
     ankisettings
     globalmediator
-    Qt5::Widgets
+    Qt6::Widgets
     anki
     scrollcombobox
     scrolldoublespinbox
@@ -24,7 +24,7 @@ add_library(
 target_link_libraries(
     audiosourcesettings
     globalmediator
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -35,7 +35,7 @@ add_library(
 target_link_libraries(
     behaviorsettings
     globalmediator
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -46,7 +46,7 @@ add_library(
 target_link_libraries(
     dictionarysettings
     globalmediator
-    Qt5::Widgets
+    Qt6::Widgets
     dictionary_db
 )
 
@@ -57,8 +57,8 @@ add_library(
 )
 target_link_libraries(
     searchsettings
-    Qt5::Widgets
-    Qt5::Core
+    Qt6::Widgets
+    Qt6::Core
 )
 
 add_library(
@@ -68,8 +68,8 @@ add_library(
 )
 target_link_libraries(
     interfacesettings
-    Qt5::Widgets
-    Qt5::Core
+    Qt6::Widgets
+    Qt6::Core
 )
 
 add_library(

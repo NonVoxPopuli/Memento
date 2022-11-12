@@ -7,8 +7,8 @@ target_link_libraries(
     mpvadapter
     globalmediator
     mpvwidget
-    Qt5::Gui
-    Qt5::Core
+    Qt6::Gui
+    Qt6::Core
 )
 
 add_subdirectory(widgets)
@@ -21,8 +21,8 @@ set(
 
 set(
     GUI_LIBS
-    Qt5::Gui
-    Qt5::Core
+    Qt6::Gui
+    Qt6::Core
     aboutwindow
     anki
     definitionwidget

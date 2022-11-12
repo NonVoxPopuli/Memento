@@ -52,7 +52,7 @@ struct Tag
     /* Score of the tag. Used for ordering. */
     int score;
 
-    bool operator==(const Tag &lhs)
+    bool operator==(const Tag &lhs) const
     {
         return name == lhs.name &&
                category == lhs.category &&

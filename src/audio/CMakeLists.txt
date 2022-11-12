@@ -7,6 +7,6 @@ target_link_libraries(
     ${MPV_LIB}
     utils
     globalmediator
-    Qt5::Core
-    Qt5::Network
+    Qt6::Core
+    Qt6::Network
 )

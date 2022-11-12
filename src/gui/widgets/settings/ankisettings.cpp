@@ -605,7 +605,7 @@ void AnkiSettings::renameProfile(const QString &oldName, const QString &newName)
     }
 }
 
-#define REGEX_REMOVE_SPACES_COMMAS "[, ]+"
+#define REGEX_REMOVE_SPACES_COMMAS (QRegularExpression("[, ]+"))
 
 void AnkiSettings::applyToConfig(const QString &profile)
 {
@@ -629,8 +629,9 @@ void AnkiSettings::applyToConfig(const QString &profile)
     config->audioDb        = m_ui->doubleAudioDb->value();
 
     config->tags = QJsonArray();
-    QStringList splitTags =
-        m_ui->lineEditTags->text().split(QRegExp(REGEX_REMOVE_SPACES_COMMAS));
+    QStringList splitTags = m_ui->lineEditTags->text().split(
+        REGEX_REMOVE_SPACES_COMMAS
+    );
     for (const QString &tag : splitTags)
     {
         config->tags.append(tag);

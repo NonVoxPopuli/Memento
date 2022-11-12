@@ -105,12 +105,20 @@ endif()
 
 # Find Qt
 if(UNIX AND NOT APPLE)
-	find_package(Qt5 COMPONENTS Widgets Network DBus X11Extras Svg Concurrent REQUIRED)
-	include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+	find_package(
+		Qt6 REQUIRED COMPONENTS
+		Widgets OpenGLWidgets Network Svg DBus Concurrent
+	)
 elseif(APPLE)
-	find_package(Qt5 COMPONENTS Widgets Network Svg Concurrent REQUIRED)
+	find_package(
+		Qt6 REQUIRED COMPONENTS
+		Widgets OpenGLWidgets Network Svg Concurrent
+	)
 elseif(WIN32)
-	find_package(Qt5 COMPONENTS Widgets Network Svg Concurrent REQUIRED)
+	find_package(
+		Qt6 REQUIRED COMPONENTS
+		Widgets OpenGLWidgets Network Svg Concurrent
+	)
 endif()
 
 # Other dependencies

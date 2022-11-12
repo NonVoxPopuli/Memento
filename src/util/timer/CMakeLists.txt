@@ -6,6 +6,6 @@ add_library(
 )
 target_link_libraries(
     cursortimer
-    Qt5::Core
+    Qt6::Core
     ${MPV_LIB}
 )

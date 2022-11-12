@@ -385,7 +385,7 @@ QString DatabaseManager::queryTerms(const QString &query, QList<SharedTerm> &ter
     }
     if (isStepError(step))
     {
-        ret = QString("Error when executing sqlite query. Code ") + step;
+        ret = QString("Error when executing sqlite query. Code %1").arg(step);
         goto error;
     }
 
@@ -921,10 +921,10 @@ QString DatabaseManager::errorCodeToString(const int code) const
     }
 }
 
-#define HALFWIDTH_LOW           0xFF61
-#define HALFWIDTH_HIGH          0xFF9F
-#define HALFWIDTH_VOICED        0xFF9E
-#define HALFWIDTH_SEMI_VOICED   0xFF9F
+#define HALFWIDTH_LOW           QChar(0xFF61)
+#define HALFWIDTH_HIGH          QChar(0xFF9F)
+#define HALFWIDTH_VOICED        QChar(0xFF9E)
+#define HALFWIDTH_SEMI_VOICED   QChar(0xFF9F)
 
 QString DatabaseManager::halfToFull(const QString &query) const
 {

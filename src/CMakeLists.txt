@@ -121,7 +121,7 @@ else()
 		../res/resources.qrc
 	)
 endif()
-target_link_libraries(${PROJECT_NAME} mainwindow Qt5::Svg)
+target_link_libraries(${PROJECT_NAME} mainwindow Qt6::Svg)
 
 # This is a target that will create memento_debug.exe so that issues can be
 # debugged easier on Windows
@@ -132,7 +132,7 @@ if(WIN32)
 		main.cpp
 		../res/resources.qrc
 	)
-	target_link_libraries(${PROJECT_NAME}_debug mainwindow Qt5::Svg)
+	target_link_libraries(${PROJECT_NAME}_debug mainwindow Qt6::Svg)
 endif()
 
 # Install targets

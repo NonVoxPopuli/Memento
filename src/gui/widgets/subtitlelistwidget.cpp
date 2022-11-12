@@ -82,10 +82,10 @@ SubtitleListWidget::SubtitleListWidget(QWidget *parent)
     m_primary.table = m_ui->tablePrim;
     m_secondary.table = m_ui->tableSec;
 
-    m_copyShortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
+    m_copyShortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_C), this);
     m_copyAudioShortcut =
-        new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_C), this);
-    m_findShortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this);
+        new QShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_C), this);
+    m_findShortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_F), this);
 
     initTheme();
     initRegex();
@@ -381,7 +381,7 @@ void SubtitleListWidget::handleTracklistChange(
             if (!m_subtitleMap.contains(extSids[i]))
             {
                 m_subtitleMap[extSids[i]] = new QList<SubtitleInfo>;
-                m_subtitleParsed[extSids[i]] = new bool;
+                m_subtitleParsed[extSids[i]] = new bool{false};
             }
             *m_subtitleMap[extSids[i]] =
                 parser.parseSubtitles(extTracks[i]);
@@ -457,7 +457,7 @@ QTableWidgetItem *SubtitleListWidget::addTableItem(
     {
         subtitleItem = new QTableWidgetItem(info.text);
     }
-    list.itemToSub.insert(subtitleItem, &info);
+    list.itemToSub.insert(subtitleItem, info);
     QStringList lines = info.text.split('\n');
     for (const QString &line : lines)
     {
@@ -474,7 +474,7 @@ QTableWidgetItem *SubtitleListWidget::addTableItem(
      * be worth it.
      */
     size_t i = std::distance(list.startToItem.begin(), endIt);
-    for (endIt += 1;
+    for (++endIt;
          endIt != list.startToItem.end() && endIt.key() == info.start;
          ++endIt)
     {
@@ -614,9 +614,9 @@ void SubtitleListWidget::selectSubtitles(SubtitleList &list,
         QList<QTableWidgetItem *> items = list.lineToItem.values(line);
         for (QTableWidgetItem *item : items)
         {
-            const SubtitleInfo *info = list.itemToSub[item];
-            if (info->start <= time + TIME_DELTA &&
-                info->end >= time - TIME_DELTA)
+            const SubtitleInfo info = list.itemToSub[item];
+            if (info.start <= time + TIME_DELTA &&
+                info.end >= time - TIME_DELTA)
             {
                 list.table->scrollToItem(item);
                 rows << list.table->row(item);
@@ -741,14 +741,14 @@ inline QPair<double, double> SubtitleListWidget::getContextTime(
     QList<QTableWidgetItem *> items = list.table->selectedItems();
     if (!items.isEmpty())
     {
-        start = list.itemToSub[items.first()]->start;
-        end = list.itemToSub[items.last()]->end;
+        start = list.itemToSub[items.first()].start;
+        end = list.itemToSub[items.last()].end;
     }
     for (QTableWidgetItem *item : items)
     {
-        const SubtitleInfo *info = list.itemToSub[item];
-        start = start < info->start ? start : info->start;
-        end = end > info->end ? end : info->end;
+        const SubtitleInfo info = list.itemToSub[item];
+        start = start < info.start ? start : info.start;
+        end = end > info.end ? end : info.end;
     }
 
     return QPair<double, double>(start, end);
@@ -770,7 +770,7 @@ void SubtitleListWidget::seekToSubtitle(QTableWidgetItem *item,
     PlayerAdapter *player =
         GlobalMediator::getGlobalMediator()->getPlayerAdapter();
     double pos =
-        list.itemToSub[item]->start +
+        list.itemToSub[item].start +
         player->getSubDelay() +
         SEEK_ERROR;
     if (pos < 0)

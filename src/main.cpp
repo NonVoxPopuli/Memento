@@ -156,9 +156,6 @@ int main(int argc, char **argv)
     /* Image Formats Windows */
     QCoreApplication::addLibraryPath(DirectoryUtils::getProgramDirectory());
 #endif
-    /* HiDPI support */
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     /* Organization Info */
     QCoreApplication::setOrganizationName("memento");
     QCoreApplication::setOrganizationDomain("ripose.projects");

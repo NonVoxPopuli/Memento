@@ -12,8 +12,8 @@ add_library(
 )
 target_link_libraries(
     definitionwidget
-    Qt5::Widgets
-    Qt5::Network
+    Qt6::Widgets
+    Qt6::Network
     dictionary_db
     flowlayout
     audioplayer

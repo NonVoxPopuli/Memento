@@ -44,13 +44,13 @@ PlayerOverlay::PlayerOverlay(QWidget *parent) : QVBoxLayout(parent)
     /* Fix the margins */
     setSpacing(0);
     setContentsMargins(QMargins(0, 0, 0, 0));
-    setMargin(0);
+    setContentsMargins(QMargins(0, 0, 0, 0));
 
     /* Create the container */
     QVBoxLayout *layoutContainer = new QVBoxLayout;
     layoutContainer->setSpacing(0);
     layoutContainer->setContentsMargins(QMargins(0, 0, 0, 0));
-    layoutContainer->setMargin(0);
+    layoutContainer->setContentsMargins(QMargins(0, 0, 0, 0));
     m_container = new QWidget;
     m_container->setMouseTracking(true);
     m_container->setLayout(layoutContainer);

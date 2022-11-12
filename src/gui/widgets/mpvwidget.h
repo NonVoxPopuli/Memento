@@ -23,9 +23,9 @@
 
 #include <QHash>
 #include <QMouseEvent>
-#include <QOpenGLWidget>
 #include <QRegularExpression>
 #include <QTimer>
+#include <QtOpenGLWidgets/QOpenGLWidget>
 
 #include <mpv/client.h>
 #include <mpv/render_gl.h>

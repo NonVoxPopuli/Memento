@@ -12,8 +12,8 @@ if (WIN32)
         ${JSONC}
         ${LIBZIP}
         ${MECAB}
-        Qt5::Core
-        Qt5::Widgets
+        Qt6::Core
+        Qt6::Widgets
         "-lregex"
     )
 else()
@@ -23,7 +23,7 @@ else()
         ${JSONC}
         ${LIBZIP}
         ${MECAB}
-        Qt5::Core
-        Qt5::Widgets
+        Qt6::Core
+        Qt6::Widgets
     )
 endif()

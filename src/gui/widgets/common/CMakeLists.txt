@@ -4,7 +4,7 @@ add_library(
 )
 target_link_libraries(
     flowlayout
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -13,7 +13,7 @@ add_library(
 )
 target_link_libraries(
     strokelabel
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -22,7 +22,7 @@ add_library(
 )
 target_link_libraries(
     sliderjumpstyle
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -31,7 +31,7 @@ add_library(
 )
 target_link_libraries(
     scrollcombobox
-    Qt5::Widgets
+    Qt6::Widgets
 )
 
 add_library(
@@ -40,5 +40,5 @@ add_library(
 )
 target_link_libraries(
     scrolldoublespinbox
-    Qt5::Widgets
+    Qt6::Widgets
 )

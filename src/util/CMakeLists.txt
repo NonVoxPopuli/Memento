@@ -4,7 +4,8 @@ add_library(
 )
 target_link_libraries(
     globalmediator
-    Qt5::Core
+    Qt6::Core
+    mpvadapter
 )
 
 add_library(
@@ -14,8 +15,8 @@ add_library(
 target_link_libraries(
     utils
     globalmediator
-    Qt5::Core
-    Qt5::Network
+    Qt6::Core
+    Qt6::Network
 )
 
 add_library(
@@ -25,8 +26,8 @@ add_library(
 )
 target_link_libraries(
     iconfactory
-    Qt5::Gui
-    Qt5::Widgets
+    Qt6::Gui
+    Qt6::Widgets
 )
 
 add_library(
@@ -35,7 +36,7 @@ add_library(
 )
 target_link_libraries(
     subtitleparser
-    Qt5::Core
+    Qt6::Core
 )
 
 if (APPLE)

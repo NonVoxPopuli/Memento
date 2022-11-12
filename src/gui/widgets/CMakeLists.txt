@@ -13,14 +13,15 @@ set(
     cursortimer
     ${MPV_LIB}
     utils
-    Qt5::Widgets
+    Qt6::Widgets
+    Qt6::OpenGLWidgets
 )
 if(UNIX AND NOT APPLE)
     set(
         MPV_WIDGET_LIBS
 	    ${MPV_WIDGET_LIBS}
-	    Qt5::DBus
-        Qt5::X11Extras
+	    Qt6::DBus
+        Qt6::GuiPrivate
     )
 elseif(UNIX AND APPLE)
     set(
@@ -41,8 +42,8 @@ add_library(
 )
 target_link_libraries(
     aboutwindow
-    Qt5::Widgets
-    Qt5::Core
+    Qt6::Widgets
+    Qt6::Core
 )
 
 # Add Search Widget
@@ -54,8 +55,8 @@ target_link_libraries(
     searchwidget
     definitionwidget
     dictionary_db
-    Qt5::Core
-    Qt5::Widgets
+    Qt6::Core
+    Qt6::Widgets
 )
 
 # Add Subtitle List
@@ -66,7 +67,7 @@ add_library(
 )
 target_link_libraries(
     subtitlelist
-    Qt5::Widgets
+    Qt6::Widgets
     mpvadapter
     subtitleparser
 )
